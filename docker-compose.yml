@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    image: node:16.3.0-alpine
+    working_dir: "/usr/current/app"
+    command: npm run dev
+    env_file: ${ENV_FILE:-.env.development}
+    volumes:
+      - .:/usr/current/app:rw
+      - ./node_modules:/usr/current/app/node_modules:cached
+    ports: ["4000:4000"]
